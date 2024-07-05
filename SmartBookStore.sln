@@ -5,7 +5,11 @@ VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartBookStore", "SmartBookStore\SmartBookStore.csproj", "{5755CAC8-A254-4DA8-A72D-E19AC048FF1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartBookStoreRazor_Temp", "SmartBookStoreRazor_Temp\SmartBookStoreRazor_Temp.csproj", "{F17BA4BC-47FA-404C-90A4-32593C19E84E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartBookStore.DataAccess", "SmartBookStore.DataAccess\SmartBookStore.DataAccess.csproj", "{89F91EC9-4221-401A-B479-EBFBF2BE1F4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartBookStore.Models", "SmartBookStore.Models\SmartBookStore.Models.csproj", "{535E7753-D3F0-4290-8AAD-F12F8DD46ED8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartBookStore.Utility", "SmartBookStore.Utility\SmartBookStore.Utility.csproj", "{97663EF9-DCA6-4CA9-96F4-796121518E61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +21,18 @@ Global
 		{5755CAC8-A254-4DA8-A72D-E19AC048FF1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5755CAC8-A254-4DA8-A72D-E19AC048FF1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5755CAC8-A254-4DA8-A72D-E19AC048FF1B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F17BA4BC-47FA-404C-90A4-32593C19E84E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F17BA4BC-47FA-404C-90A4-32593C19E84E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F17BA4BC-47FA-404C-90A4-32593C19E84E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F17BA4BC-47FA-404C-90A4-32593C19E84E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89F91EC9-4221-401A-B479-EBFBF2BE1F4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89F91EC9-4221-401A-B479-EBFBF2BE1F4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89F91EC9-4221-401A-B479-EBFBF2BE1F4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89F91EC9-4221-401A-B479-EBFBF2BE1F4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{535E7753-D3F0-4290-8AAD-F12F8DD46ED8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{535E7753-D3F0-4290-8AAD-F12F8DD46ED8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{535E7753-D3F0-4290-8AAD-F12F8DD46ED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{535E7753-D3F0-4290-8AAD-F12F8DD46ED8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97663EF9-DCA6-4CA9-96F4-796121518E61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97663EF9-DCA6-4CA9-96F4-796121518E61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97663EF9-DCA6-4CA9-96F4-796121518E61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97663EF9-DCA6-4CA9-96F4-796121518E61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
