@@ -1,5 +1,5 @@
 ﻿ using Microsoft.AspNetCore.Mvc;
-using SmartBookStore.Data;
+using SmartBookStore.DataAccess.Data;
 using SmartBookStore.Models;
 
 namespace SmartBookStore.Controllers

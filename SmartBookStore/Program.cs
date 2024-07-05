@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using SmartBookStore.Data;
+using SmartBookStore.DataAccess.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
