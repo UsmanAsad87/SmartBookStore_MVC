@@ -1,19 +1,21 @@
-﻿ using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SmartBookStore.DataAccess.Data;
+using SmartBookStore.DataAccess.Repository.IRepository;
 using SmartBookStore.Models;
 
-namespace SmartBookStore.Controllers
+namespace SmartBookStore.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
-        private readonly ApplicationDbContext _db;
-        public CategoryController(ApplicationDbContext db)
+        private readonly IUnitOfWork _unitOfWork;
+        public CategoryController(IUnitOfWork unitOfWork)
         {
-            _db = db;
+            _unitOfWork = unitOfWork;
         }
         public IActionResult Index()
         {
-            List<Category> objCategoryList = _db.Categories.ToList();
+            List<Category> objCategoryList = _unitOfWork.Category.GetAll().ToList();
             return View(objCategoryList);
         }
 
@@ -24,14 +26,14 @@ namespace SmartBookStore.Controllers
         [HttpPost]
         public IActionResult Create(Category obj)
         {
-            if(obj.Name== obj.DisplayOrder.ToString())
+            if (obj.Name == obj.DisplayOrder.ToString())
             {
                 ModelState.AddModelError("", "The Display Order cannot match the Name");
             }
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                _db.Categories.Add(obj);
-                _db.SaveChanges();
+                _unitOfWork.Category.Add(obj);
+                _unitOfWork.Save();
                 TempData["success"] = "Category Created successfully";
                 return RedirectToAction("Index");
 
@@ -41,10 +43,11 @@ namespace SmartBookStore.Controllers
 
         public IActionResult Edit(int? id)
         {
-            if (id == null || id==0) {
+            if (id == null || id == 0)
+            {
                 return NotFound();
             }
-            Category? categoryFromDb = _db.Categories.Find(id); // first Method work on primary key
+            Category? categoryFromDb = _unitOfWork.Category.Get(u => u.Id == id); // first Method work on primary key
             //Category? categoryFromDb1 = _db.Categories.FirstOrDefault(c => c.Id == id);
             //Category? categoryFromDb2= _db.Categories.Where(u=>u.Id==id).FirstOrDefault();
 
@@ -64,8 +67,8 @@ namespace SmartBookStore.Controllers
             }
             if (ModelState.IsValid)
             {
-                _db.Categories.Update(obj);
-                _db.SaveChanges();
+                _unitOfWork.Category.Update(obj);
+                _unitOfWork.Save();
                 TempData["success"] = "Category Updated successfully";
                 return RedirectToAction("Index");
 
@@ -81,7 +84,7 @@ namespace SmartBookStore.Controllers
             {
                 return NotFound();
             }
-            Category? categoryFromDb = _db.Categories.Find(id); // first Method work on primary key
+            Category? categoryFromDb = _unitOfWork.Category.Get(u => u.Id == id);
 
             if (categoryFromDb == null)
             {
@@ -90,16 +93,16 @@ namespace SmartBookStore.Controllers
 
             return View(categoryFromDb);
         }
-        [HttpPost,ActionName("Delete")]
+        [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int? id)
         {
-            Category? obj = _db.Categories.Find(id); 
-            if(obj == null)
+            Category? obj = _unitOfWork.Category.Get(u => u.Id == id);
+            if (obj == null)
             {
                 return NotFound();
             }
-            _db.Categories.Remove(obj);
-            _db.SaveChanges();
+            _unitOfWork.Category.Remove(obj);
+            _unitOfWork.Save();
             TempData["success"] = "Category Deleted successfully";
 
             return RedirectToAction("Index");

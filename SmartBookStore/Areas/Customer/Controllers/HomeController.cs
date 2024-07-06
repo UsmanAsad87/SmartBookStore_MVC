@@ -2,8 +2,10 @@ using Microsoft.AspNetCore.Mvc;
 using SmartBookStore.Models;
 using System.Diagnostics;
 
-namespace SmartBookStore.Controllers
+namespace SmartBookStore.Areas.Customer.Controllers
 {
+    [Area("Customer")]
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
