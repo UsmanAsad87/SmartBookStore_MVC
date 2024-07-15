@@ -29,4 +29,8 @@
     <ProjectReference Include="..\SmartBookStore.Utility\SmartBookStore.Utility.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\product\" />
+  </ItemGroup>
+
 </Project>

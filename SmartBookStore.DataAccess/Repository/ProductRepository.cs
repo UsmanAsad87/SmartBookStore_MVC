@@ -20,7 +20,24 @@ namespace SmartBookStore.DataAccess.Repository
 
         public void Update(Models.Product obj)
         {
-            _db.Products.Update(obj);
+            var objFromDb= _db.Products.FirstOrDefault(x => x.Id == obj.Id);
+            if (objFromDb != null) { 
+                objFromDb.Title= obj.Title;
+                objFromDb.ISBN= obj.ISBN ;
+                objFromDb.Description= obj.Description;  
+                objFromDb.Price= obj.Price; 
+                objFromDb.CategoryId= obj.CategoryId;
+                objFromDb.Price50= obj.Price50;
+                objFromDb.Price100= obj.Price100;   
+                objFromDb.ListPrice = obj.ListPrice;
+                objFromDb.Author = obj.Author;
+                if (obj.ImageUrl != null)
+                {
+                    objFromDb.ImageUrl= obj.ImageUrl;
+                }
+
+            }
+           // _db.Products.Update(obj);
         }
         
     }
