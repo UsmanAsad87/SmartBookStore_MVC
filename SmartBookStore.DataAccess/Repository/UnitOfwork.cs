@@ -15,11 +15,13 @@ namespace SmartBookStore.DataAccess.Repository
         {
             _db = db;
             Category = new CategoryRepository(_db);
+            Product = new ProductRepository(_db);
         }
         public void Save()
         {
             _db.SaveChanges();
         }
         public ICategoryRepository Category { get; private set; }
+        public IProductRepository Product { get; private set; }
     }
 }
