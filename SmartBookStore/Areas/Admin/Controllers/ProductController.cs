@@ -1,13 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SmartBookStore.DataAccess.Data;
 using SmartBookStore.DataAccess.Repository.IRepository;
 using SmartBookStore.Models;
 using SmartBookStore.Models.ViewModels;
+using SmartBookStore.Utility;
 
 namespace SmartBookStore.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
+
     public class ProductController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

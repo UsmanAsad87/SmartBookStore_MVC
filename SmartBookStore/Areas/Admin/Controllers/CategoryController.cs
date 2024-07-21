@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SmartBookStore.DataAccess.Data;
 using SmartBookStore.DataAccess.Repository.IRepository;
 using SmartBookStore.Models;
+using SmartBookStore.Utility;
 
 namespace SmartBookStore.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

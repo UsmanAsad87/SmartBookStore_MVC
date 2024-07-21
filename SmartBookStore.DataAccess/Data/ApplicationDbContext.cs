@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SmartBookStore.Models;
 
 namespace SmartBookStore.DataAccess.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
@@ -13,6 +15,9 @@ namespace SmartBookStore.DataAccess.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
+        public DbSet<Company> Companies { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,6 +28,61 @@ namespace SmartBookStore.DataAccess.Data
                 new Category { Id = 2, Name = "SciFi", DisplayOrder = 2 },
                 new Category { Id = 3, Name = "History", DisplayOrder = 3 }
                 );
+
+            modelBuilder.Entity<Company>().HasData(
+
+           new Company
+           {
+               Id=1,
+               Name = "ABC Inc.",
+               StreetAddress = "123 Main St",
+               PostalCode = "10001",
+               PhoneNumber = "(555) 123-4567",
+               City = "New York",
+               State = "NY"
+           },
+           new Company
+           {
+               Id = 2,
+               Name = "XYZ Corporation",
+               StreetAddress = "456 Elm Ave",
+               PostalCode = "20002",
+               PhoneNumber = "(555) 987-6543",
+               City = "Washington",
+               State = "DC"
+           },
+           new Company
+           {
+               Id=3,
+               Name = "EFG Ltd.",
+               StreetAddress = "789 Oak Blvd",
+               PostalCode = "30003",
+               PhoneNumber = "(555) 222-3333",
+               City = "Atlanta",
+               State = "GA"
+           },
+           new Company
+           {
+               Id=4,
+               Name = "123 Industries",
+               StreetAddress = "101 Pine St",
+               PostalCode = "40004",
+               PhoneNumber = "(555) 777-8888",
+               City = "Los Angeles",
+               State = "CA"
+           },
+           new Company
+           {
+               Id=5,
+               Name = "Tech Solutions",
+               StreetAddress = "505 Cedar Ave",
+               PostalCode = "50005",
+               PhoneNumber = "(555) 444-9999",
+               City = "San Francisco",
+               State = "CA"
+           }
+
+           );
             modelBuilder.Entity<Product>().HasData(
 
                  new Product
