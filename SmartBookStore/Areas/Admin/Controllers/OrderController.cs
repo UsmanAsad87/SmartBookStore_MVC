@@ -1,13 +1,16 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using SmartBookStore.DataAccess.Repository.IRepository;
 using SmartBookStore.Models;
+using SmartBookStore.Models.ViewModels;
 using SmartBookStore.Utility;
 using System.Diagnostics;
 
 namespace SmartBookStore.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class OrderController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -18,6 +21,16 @@ namespace SmartBookStore.Areas.Admin.Controllers
         public IActionResult Index()
         {
             return View();
+        } 
+        public IActionResult Details(int orderId)
+        {
+            OrderVM orderVM = new()
+            {
+                OrderHeader = _unitOfWork.OrderHeader.Get(u => u.Id == orderId, includeProperties: "ApplicationUser"),
+                OrderDetail = _unitOfWork.OrderDetail.GetAll(u => u.OrderHeaderId == orderId,includeProperties:"Product")
+
+            };
+            return View(orderVM);
         }
 
 
