@@ -8,7 +8,6 @@ SmartBookStore MVC is a web application built with ASP.NET Core 8, Entity Framew
 - **CRUD Operations**: Perform create, read, update, and delete operations on books and manage book listings.
 - **Stripe Payment Integration**: Secure payment processing using Stripe API.
 - **Entity Framework Core**: Code-first migrations for database management.
-- **Email Notifications**: Send email notifications to users for different actions.
 - **Bootstrap 5**: Used for front-end responsive design.
 - **Role Management**: Admins can manage roles and user permissions.
 - **Database Seed & Migration**: Automatic database seeding and migrations for data consistency.
@@ -25,6 +24,7 @@ SmartBookStore MVC is a web application built with ASP.NET Core 8, Entity Framew
 ## Prerequisites
 
 - **Visual Studio 2022** (or newer)
+- **ASP .net Core 8**
 - **SQL Server Management Studio** (for database management)
 - **Stripe Account** (for payment integration)
 
